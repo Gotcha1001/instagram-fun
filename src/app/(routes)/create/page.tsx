@@ -5,7 +5,7 @@ import { CloudUploadIcon, SendIcon, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import CustomToast from '@/components/CustomToast'; // Adjust the import path accordingly
+import CustomToast from "@/components/CustomToast"; // Adjust the import path accordingly
 
 export default function CreatePage() {
   const [imageUrl, setImageUrl] = useState("");
@@ -37,7 +37,7 @@ export default function CreatePage() {
             setIsUploading(false);
           }),
         {
-          loading: "📸 Uploading your image...",
+          loading: "Uploading your image...",
           success: "✨ Image uploaded successfully!",
           error: "❌ Upload failed. Please try again.",
         }
@@ -47,11 +47,11 @@ export default function CreatePage() {
 
   return (
     <>
-      <CustomToast /> {/* Include your CustomToast component */}
+      {/* <CustomToast />  */}
       <form
         action={async (data) => {
           const id = await postEntry(data);
-          toast.success("🎉 Your post has been published!", {
+          toast.success("Your post has been published!", {
             duration: 4000,
             icon: "🚀",
           });
@@ -65,7 +65,11 @@ export default function CreatePage() {
           <div className="flex flex-col gap-2">
             <div className="w-64 min-h-64 p-2 bg-gray-400 mt-4 rounded-md relative">
               {imageUrl && (
-                <img className="rounded-md" src={imageUrl} alt="Upload preview" />
+                <img
+                  className="rounded-md"
+                  src={imageUrl}
+                  alt="Upload preview"
+                />
               )}
               <div className="absolute inset-0 flex items-center justify-center">
                 <input

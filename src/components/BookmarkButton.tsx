@@ -36,7 +36,7 @@ export default function BookmarkButton({
           className={
             bookmarkedByMe
               ? "text-white fill-red-600 dark:fill-white"
-              : "text-white"
+              : "text-gray-700"
           }
         />
       </button>

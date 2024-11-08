@@ -35,7 +35,9 @@ export default function LikesInfo({
     >
       <input type="hidden" name="postId" value={post.id} />
       <button type="submit" className="zoom">
-        <HeartIcon className={likedByMe ? "text-red-600 fill-red-600" : "text-white "} />
+        <HeartIcon
+          className={likedByMe ? "text-red-600 fill-red-600" : "text-gray-700 "}
+        />
       </button>
       {showText && <p> {post.likesCount} People like this...</p>}
     </form>
