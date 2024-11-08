@@ -5,7 +5,6 @@ import { CloudUploadIcon, SendIcon, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import CustomToast from "@/components/CustomToast"; // Adjust the import path accordingly
 
 export default function CreatePage() {
   const [imageUrl, setImageUrl] = useState("");
