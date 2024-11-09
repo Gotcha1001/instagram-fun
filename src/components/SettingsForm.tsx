@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { Profile } from "@prisma/client";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import CustomToast from "@/components/CustomToast"; // Adjust the path as necessary
 
 export default function SettingsForm({ profile }: { profile: Profile | null }) {
   const router = useRouter();
