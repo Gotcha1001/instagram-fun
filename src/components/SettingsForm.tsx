@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Profile } from "@prisma/client";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import CustomToast from '@/components/CustomToast'; // Adjust the path as necessary
+import CustomToast from "@/components/CustomToast"; // Adjust the path as necessary
 
 export default function SettingsForm({ profile }: { profile: Profile | null }) {
   const router = useRouter();
@@ -48,7 +48,7 @@ export default function SettingsForm({ profile }: { profile: Profile | null }) {
 
   return (
     <>
-      <CustomToast />
+      {/* <CustomToast /> */}
       <form
         action={async (data: FormData) => {
           await updateProfile(data);
@@ -119,20 +119,21 @@ export default function SettingsForm({ profile }: { profile: Profile | null }) {
         <p className="mt-2 font-bold">Bio</p>
         <TextArea name="bio" defaultValue={profile?.bio || ""} />
         <label className="flex items-center gap-2 mt-2">
-        <span>Dark Mode</span> 
+          <span>Dark Mode</span>
           <Switch
-          defaultChecked={localStorage.getItem('theme') == 'dark'}
-           onCheckedChange={(isDark) => {
-          const html = document.querySelector('html');
-          const theme = isDark ? 'dark' : 'light'
-      if (html){
-        html.dataset.theme = theme;
-          }
-          localStorage.setItem('theme',theme );
-          window.location.reload();
-        }} />
+            defaultChecked={localStorage.getItem("theme") == "dark"}
+            onCheckedChange={(isDark) => {
+              const html = document.querySelector("html");
+              const theme = isDark ? "dark" : "light";
+              if (html) {
+                html.dataset.theme = theme;
+              }
+              localStorage.setItem("theme", theme);
+              window.location.reload();
+            }}
+          />
         </label>
-      
+
         <div className="mt-4 flex justify-center">
           <Button variant="solid">Save Settings</Button>
         </div>

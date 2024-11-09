@@ -36,10 +36,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-    
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <Theme >
+        <Theme>
           {modal}
           <div className="flex min-h-screen dark:bg-black dark:text-white ">
             <DesktopNav />

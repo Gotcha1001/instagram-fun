@@ -14,7 +14,7 @@ export default async function Highlights() {
   const highlightsPosts = await prisma.post.findMany({
     where: {
       likesCount: {
-        gte: 3,
+        gte: 1,
       },
     },
     orderBy: { likesCount: "desc" },
