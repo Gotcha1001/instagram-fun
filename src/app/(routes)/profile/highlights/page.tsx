@@ -21,7 +21,7 @@ export default async function Highlights() {
   });
 
   return (
-    <main className="flex-1 w-full max-w-7xl mx-auto">
+    <main className="flex-1 w-full max-w-7xl mx-auto gradient-background7 rounded-lg">
       <div className="container mx-auto py-8 px-4">
         <div className="flex justify-center mb-8">
           <Link

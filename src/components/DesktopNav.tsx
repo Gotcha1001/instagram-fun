@@ -58,22 +58,31 @@ export default function DesktopNav() {
             <Switch checked={isDarkMode} onCheckedChange={handleThemeSwitch} />
           </label>
           <div className="ml-3 inline-flex flex-col gap-11 justify-center items-center mt-10">
-            <Link href="/" className={getLinkClasses("/")}>
-              <HomeIcon />
-              Home
-            </Link>
-            <Link href="/search" className={getLinkClasses("/search")}>
-              <SearchIcon />
-              Search
-            </Link>
-            <Link href="/create" className={getLinkClasses("/create")}>
-              <CameraIcon />
-              Create
+            <Link
+              href="/profile/highlights"
+              className={getLinkClasses("/browse")}
+            >
+              <LayoutGrid />
+              HighLights
             </Link>
             <Link href="/browse" className={getLinkClasses("/browse")}>
               <LayoutGrid />
               Browse
             </Link>
+            <Link href="/search" className={getLinkClasses("/search")}>
+              <SearchIcon />
+              Search
+            </Link>
+            <Link href="/" className={getLinkClasses("/")}>
+              <HomeIcon />
+              Home
+            </Link>
+
+            <Link href="/create" className={getLinkClasses("/create")}>
+              <CameraIcon />
+              Create
+            </Link>
+
             <Link href="/profile" className={getLinkClasses("/profile")}>
               <UserIcon />
               Profile
