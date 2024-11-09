@@ -17,13 +17,15 @@ export default function ProfilePageContent({
   return (
     <main>
       <ProfilePageInfo
-       profile={profile} 
-       isOurProfile={isOurProfile} 
-       ourFollow={ourFollow} />
+        profile={profile}
+        isOurProfile={isOurProfile}
+        ourFollow={ourFollow}
+      />
 
-      <ProfileNav 
-      username={profile.username || ''}
-      isOurProfile={isOurProfile}/>
+      <ProfileNav
+        username={profile.username || ""}
+        isOurProfile={isOurProfile}
+      />
       <section className="mt-4 gradient-background2 rounded-lg">
         <Suspense fallback={<Preloader />}>
           <ProfilePosts email={profile.email} />

@@ -1,4 +1,6 @@
-'use client'
+"use client";
+
+import { useState, useEffect } from "react";
 import {
   CameraIcon,
   HomeIcon,
@@ -7,10 +9,31 @@ import {
   UserIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Use usePathname instead of useRouter
+import { Switch } from "@radix-ui/themes";
+import { usePathname } from "next/navigation";
 
 export default function MobileNav() {
-  const currentPath = usePathname();
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false); // Explicitly set to boolean
+  const currentPath: string = usePathname(); // Define as string type
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      setIsDarkMode(true);
+      document.querySelector("html")?.setAttribute("data-theme", "dark");
+    } else {
+      setIsDarkMode(false);
+      document.querySelector("html")?.setAttribute("data-theme", "light");
+    }
+  }, []);
+
+  const handleThemeSwitch = (isDark: boolean) => {
+    const theme = isDark ? "dark" : "light";
+    document.querySelector("html")?.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    setIsDarkMode(isDark);
+    window.location.reload();
+  };
 
   const getLinkClasses = (path: string) =>
     `flex items-center justify-center w-full ${
@@ -21,6 +44,10 @@ export default function MobileNav() {
     <div className="block lg:hidden fixed bottom-0 left-0 right-0">
       <div className="flex justify-center *:flex *:items-center *:justify-center">
         <div className="pl-2 bg-white dark:bg-black rounded-t-xl w-full relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-sm">Dark Mode</span>
+            <Switch checked={isDarkMode} onCheckedChange={handleThemeSwitch} />
+          </div>
           <Link href="/" className={getLinkClasses("/")}>
             <HomeIcon />
           </Link>
