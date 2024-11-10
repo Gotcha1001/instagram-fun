@@ -17,7 +17,7 @@ export default async function BrowsePage() {
         </p>
       </div>
 
-      <PostsGrid posts={posts} />
+      <PostsGrid posts={posts} isOurProfile={true} />
     </div>
   );
 }
