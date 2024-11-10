@@ -28,7 +28,7 @@ export default function ProfilePageContent({
       />
       <section className="mt-4 gradient-background2 rounded-lg">
         <Suspense fallback={<Preloader />}>
-          <ProfilePosts email={profile.email} />
+          <ProfilePosts email={profile.email} isOurProfile={isOurProfile} />
         </Suspense>
       </section>
     </main>

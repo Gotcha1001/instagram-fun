@@ -7,11 +7,7 @@ import IndividualPostEffect from "./IndividualPostEffect";
 import { Profile } from "@prisma/client";
 import BookmarkButton from "./BookmarkButton";
 
-export default async function HomePosts({
-  profiles,
-}: {
-  profiles: Profile[];
-}) {
+export default async function HomePosts({ profiles }: { profiles: Profile[] }) {
   const posts = await prisma.post.findMany({
     where: {
       author: { in: profiles.map((p) => p.email) },
@@ -66,12 +62,17 @@ export default async function HomePosts({
                 <LikesInfo
                   showText={false}
                   post={post}
-                  sessionLike={likes.find((like) => like.postId === post.id) || null}
+                  sessionLike={
+                    likes.find((like) => like.postId === post.id) || null
+                  }
                 />
 
-                <BookmarkButton 
-                  post={post} 
-                  sessionBookmark={bookmarks.find(b => b.postId === post.id) || null} />
+                <BookmarkButton
+                  post={post}
+                  sessionBookmark={
+                    bookmarks.find((b) => b.postId === post.id) || null
+                  }
+                />
               </div>
             </div>
             <p className="mt-3 p-2 text-gray-300">{post.description}</p>

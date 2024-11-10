@@ -1,4 +1,3 @@
-// Add this at the top to make DesktopNav a Client Component
 "use client";
 
 import { useEffect, useState } from "react";
@@ -44,6 +43,39 @@ export default function DesktopNav() {
       currentPath === path ? "text-ig-red font-bold" : "text-gray-400"
     }`;
 
+  const navLinks = [
+    {
+      href: "/profile/highlights",
+      icon: <LayoutGrid />,
+      label: "Highlights",
+    },
+    {
+      href: "/browse",
+      icon: <LayoutGrid />,
+      label: "Browse",
+    },
+    {
+      href: "/search",
+      icon: <SearchIcon />,
+      label: "Search",
+    },
+    {
+      href: "/",
+      icon: <HomeIcon />,
+      label: "Home",
+    },
+    {
+      href: "/create",
+      icon: <CameraIcon />,
+      label: "Create",
+    },
+    {
+      href: "/profile",
+      icon: <UserIcon />,
+      label: "Profile",
+    },
+  ];
+
   return (
     <div className="hidden lg:block gradient-background2 px-4 pb-4 w-48 shadow-xl shadow-black">
       <div className="top-4 sticky">
@@ -58,35 +90,16 @@ export default function DesktopNav() {
             <Switch checked={isDarkMode} onCheckedChange={handleThemeSwitch} />
           </label>
           <div className="ml-3 inline-flex flex-col gap-11 justify-center items-center mt-10">
-            <Link
-              href="/profile/highlights"
-              className={getLinkClasses("/browse")}
-            >
-              <LayoutGrid />
-              HighLights
-            </Link>
-            <Link href="/browse" className={getLinkClasses("/browse")}>
-              <LayoutGrid />
-              Browse
-            </Link>
-            <Link href="/search" className={getLinkClasses("/search")}>
-              <SearchIcon />
-              Search
-            </Link>
-            <Link href="/" className={getLinkClasses("/")}>
-              <HomeIcon />
-              Home
-            </Link>
-
-            <Link href="/create" className={getLinkClasses("/create")}>
-              <CameraIcon />
-              Create
-            </Link>
-
-            <Link href="/profile" className={getLinkClasses("/profile")}>
-              <UserIcon />
-              Profile
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={getLinkClasses(link.href)}
+              >
+                {link.icon}
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

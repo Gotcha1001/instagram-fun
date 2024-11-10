@@ -51,7 +51,7 @@ export default function SettingsForm({ profile }: { profile: Profile | null }) {
       <form
         action={async (data: FormData) => {
           await updateProfile(data);
-          toast.success("🎉 Profile settings saved!", {
+          toast.success("Profile settings saved!", {
             duration: 4000,
           });
           router.push("/profile");

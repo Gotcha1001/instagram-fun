@@ -54,7 +54,7 @@ export default function CreatePage() {
             duration: 4000,
             icon: "🚀",
           });
-          router.push(`/posts/${id}`);
+          router.push("/profile");
           router.refresh();
         }}
         className="flex flex-col items-center rounded-xl gradient-background2 gap-4"

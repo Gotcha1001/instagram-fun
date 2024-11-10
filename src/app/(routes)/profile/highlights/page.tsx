@@ -1,8 +1,9 @@
 import { prisma } from "@/db";
-import PostsGrid from "@/components/PostsGrid";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import PostsGrid from "@/components/PostsGrid";
+import ProfileAudio from "@/components/ProfileAudio"; // Import the audio component
 
 export default async function Highlights() {
   const session = await auth();
@@ -11,6 +12,7 @@ export default async function Highlights() {
     redirect("/login");
   }
 
+  // Fetch posts that have a likesCount greater than or equal to 1
   const highlightsPosts = await prisma.post.findMany({
     where: {
       likesCount: {
@@ -20,8 +22,19 @@ export default async function Highlights() {
     orderBy: { likesCount: "desc" },
   });
 
+  // Check if the logged-in user is the author of the posts (can be adjusted to match your logic)
+  const isOurProfile = highlightsPosts.some(
+    (post) => post.author === session.user?.email
+  );
+
+  const audioUrl =
+    "https://raw.githubusercontent.com/Gotcha1001/My-Images-for-sites-Wes/main/04(80BPM).wav"; // Dynamic audio URL
+
   return (
     <main className="flex-1 w-full max-w-7xl mx-auto gradient-background7 rounded-lg">
+      {/* Pass the audio URL to the ProfileAudio component */}
+      <ProfileAudio audioUrl={audioUrl} />
+
       <div className="container mx-auto py-8 px-4">
         <div className="flex justify-center mb-8">
           <Link
@@ -34,7 +47,7 @@ export default async function Highlights() {
         <h1 className="text-4xl font-semibold text-center text-gray-800 dark:text-white mb-12">
           Most Liked Posts
         </h1>
-        <PostsGrid posts={highlightsPosts} />
+        <PostsGrid posts={highlightsPosts} isOurProfile={isOurProfile} />
       </div>
     </main>
   );
