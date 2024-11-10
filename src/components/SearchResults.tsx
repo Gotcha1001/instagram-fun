@@ -23,9 +23,7 @@ export default async function SearchResults({ query }: { query: string }) {
 
   return (
     <div>
-      <h1 className="text-lg mt-2 ">
-  {`Search Results For "${query}"`}
-</h1>
+      <h1 className="text-lg mt-2">{`Search Results For "${query}"`}</h1>
 
       {profiles?.length > 0 && (
         <div className="grid mt-4 sm:grid-cols-2 gap-6">
@@ -45,7 +43,9 @@ export default async function SearchResults({ query }: { query: string }) {
               </div>
               <div className="flex flex-col">
                 <h3>{profile.username}</h3>
-                <h4 className="text-gray-500 dark:text-gray-300 text-sm">@{profile.name}</h4>
+                <h4 className="text-gray-500 dark:text-gray-300 text-sm">
+                  @{profile.name}
+                </h4>
               </div>
             </Link>
           ))}
@@ -53,7 +53,8 @@ export default async function SearchResults({ query }: { query: string }) {
       )}
 
       <div className="mt-4">
-        <PostsGrid posts={posts} />
+        {/* Pass isOurProfile as false, since we are not showing the user's own posts */}
+        <PostsGrid posts={posts} isOurProfile={false} />
       </div>
     </div>
   );
