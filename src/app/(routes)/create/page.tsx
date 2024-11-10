@@ -46,10 +46,9 @@ export default function CreatePage() {
 
   return (
     <>
-      {/* <CustomToast />  */}
       <form
         action={async (data) => {
-          const id = await postEntry(data);
+          await postEntry(data);
           toast.success("Your post has been published!", {
             duration: 4000,
             icon: "🚀",
