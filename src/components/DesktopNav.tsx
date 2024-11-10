@@ -45,6 +45,11 @@ export default function DesktopNav() {
 
   const navLinks = [
     {
+      href: "/",
+      icon: <HomeIcon />,
+      label: "Home",
+    },
+    {
       href: "/profile/highlights",
       icon: <LayoutGrid />,
       label: "Highlights",
@@ -58,11 +63,6 @@ export default function DesktopNav() {
       href: "/search",
       icon: <SearchIcon />,
       label: "Search",
-    },
-    {
-      href: "/",
-      icon: <HomeIcon />,
-      label: "Home",
     },
     {
       href: "/create",
